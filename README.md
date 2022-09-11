@@ -2,13 +2,13 @@
 
 ## Description
 
-The project uses two microservices: the backend REST microservice and UI. The bakend is implemented with `express.js` and located in `server.js` file. The frontend is implemented with `React.js` and located in `src` derectory.\
+The project consists of the backend REST microservice and UI. The bakend is implemented with `express.js` and is located in the `server.js` file. The frontend is implemented with `React.js` and located in the `src` derectory.
 
-The project uses `REST` microservice to fetch and render a list of `supervisors` along with inputs for additional information required to be provided by the user.\
+The project uses `REST` microservice to fetch a list of `supervisors`, preprocess it and send to the `UI`. `UI` renders `supervisors` along with the fields for additioanl inputs to be provided by the user.
 
-User enters requested information, selects supervisor and submits request to the backend `REST` microservice. Required fields are: `First Name`, `Last Name`, and `Supervisor`. The required fields are marked as `requied` attribute, and must be filled to submit the request.
+User enters required information, selects supervisor and submits request to the backend `REST` microservice. Required fields are: `First Name`, `Last Name`, and `Supervisor`. The required fields are marked with `requied` attribute, and must be filled to submit the request.
 
-Backend validates the input fields of the request. If fields are valid, `SUCCESS!` message is prited to the console of the back end and sent and presented to the user. As a seccessful result, form fields and compotent state are reseted. If invalid fields are encountered, array of errors is created, printed to the console of the backend service, and sent to the user.
+Backend validates the input fields of the request. If all the fields are valid, `SUCCESS!` message is prited to the console of the backend and sent and presented to the user. Finally, form fields and compotent state are reseted. If invalid fields are encountered, array of errors is created, printed to the console of the backend service, and sent to the user.
 
 ## Run the project
 
@@ -20,7 +20,7 @@ Command to download and install project dependencies.
 
 ### `npm run build`
 
-Command to create `build` directory, build files, and place built files under `build` directory.
+Command to create `build` directory, to build files, and to place built files under `build` directory.
 
 ### `node server.js`
 
