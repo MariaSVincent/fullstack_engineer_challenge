@@ -1,71 +1,41 @@
-# Getting Started with Create React App
+# Fullstack Engineer Challengev, Maria Vincent
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+The project uses two microservices: the backend REST microservice and UI. The bakend is implemented with `express.js` and located in `server.js` file. The frontend is implemented with `React.js` and located in `src` derectory.\
 
-In the project directory, you can run:
+The project uses `REST` microservice to fetch and render a list of `supervisors` along with inputs for additional information required to be provided by the user.\
 
-### `npm start`
+User enters requested information, selects supervisor and submits request to the backend `REST` microservice. Required fields are: `First Name`, `Last Name`, and `Supervisor`. The required fields are marked as `requied` attribute, and must be filled to submit the request.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend validates the input fields of the request. If fields are valid, `SUCCESS!` message is prited to the console of the back end and sent and presented to the user. As a seccessful result, form fields and compotent state are reseted. If invalid fields are encountered, array of errors is created, printed to the console of the backend service, and sent to the user.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Run the project
 
-### `npm test`
+In the project directory, run the following commands in order:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm install`
+
+Command to download and install project dependencies.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Command to create `build` directory, build files, and place built files under `build` directory.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `node server.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Command will start `server.js` with `express` and will serve files from `build` directory. \
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
-### `npm run eject`
+## Run the project with `Docker`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In the project directory, run the following commands in order:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `docker-compose build`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Build the container image.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `docker-compose up`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# fullstack_engineer_challenge
+Start the container.\
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
