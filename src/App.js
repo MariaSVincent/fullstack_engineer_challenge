@@ -13,6 +13,7 @@ const App = () => {
   const [submitResponse, setSubmitResponse] = useState('')
   const [error, setError] = useState([])
 
+  /* initial set up with GET requeset for supervisrs list */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,22 +31,27 @@ const App = () => {
     fetchData()
   }, [])
 
+  /* this function is called on submit and is using POST request with user input */
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const postRequest = async () => {
+      /* POST request body with minimal inormation required */
       const body = {
         firstName: e.target['firstName'].value,
         lastName: e.target['lastName'].value,
         supervisor: e.target['supervisor'].value 
       }
+      /* if Phone is entered, adding it to a body of a request */
       if (e.target.phoneNumber.value.length > 0) {
         body['phoneNumber'] = e.target['phoneNumber'].value
       }
+      /* if email is entered, adding it to a body of a request */
       if (e.target.email.value.length > 0) {
         body['email'] = e.target['email'].value
       }
 
+      /* assembling request object */
       const request = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,14 +59,17 @@ const App = () => {
       }
       
       try {
+        /* submitting POST request */
         const response = await fetch('/api/submit', request)
         if (response.ok) {
+          /* on SUCCESS clearing components state and resetting form */
           setSubmitResponse(SUCCESS)
           setEmailChecked(false)
           setPhoneChecked(false)
           setError([])
           e.target.reset()
         } else {
+          /* on Failer setting an errors array to render to a user */ 
           const message = await response.json()
           setSubmitResponse(FAILER)
           setError(message.error)

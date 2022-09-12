@@ -20,7 +20,7 @@ app.get('/api/supervisors', (req, res) => {
       if (response.ok) {
         const supervisors = await response.json()
         supervisors.sort(compare)
-        
+        /* formatting supervisors fields to match a format: '<jurisdiction> - <lastName>, <firstName>' */
         for (let i in supervisors) {
           supervisors[i] = supervisors[i].jurisdiction + ' - ' + supervisors[i].lastName + ', ' + supervisors[i].firstName
         }
@@ -38,6 +38,7 @@ app.get('/api/supervisors', (req, res) => {
 })
 
 app.post('/api/submit', (req, res) => {
+  /* validating submitted fields, and collecting errors into errArr */
   let errArr = []
   if (!validateInput(req.body.firstName, NAME_PATTERN)) {
     errArr.push(`First Name: '${req.body.firstName}' must only contain letters.`)
@@ -52,6 +53,7 @@ app.post('/api/submit', (req, res) => {
     errArr.push(`Email address: '${req.body.email}' is invalid.`)
   }
 
+  /* if there were no errors, responding with SUCCESS message to console and user */
   if (errArr.length === 0) {
     console.log('SUCCESS!')
     console.log({ body: req.body })
@@ -59,7 +61,8 @@ app.post('/api/submit', (req, res) => {
       .status(200)
       .send()
   } else {
-    console.log('FAILED!')
+    /* if there were errors, responding with FAILURE message and errors to console and user */ 
+    console.log('FAILURE!')
     console.log({body: req.body, errors: [...errArr]})
     res
     .status(400)
@@ -68,10 +71,12 @@ app.post('/api/submit', (req, res) => {
   }
 })
 
+/* functions to validate input against a pattern */
 const validateInput = (input, pattern) => {
   return input.match(pattern)
 }
 
+/* function to sort supervisors by juristiction, then by last name, then by first name */
 const compare = (a, b) => {
   if (a.jurisdiction < b.jurisdiction) return -1
   if (a.jurisdiction > b.jurisdiction) return 1
